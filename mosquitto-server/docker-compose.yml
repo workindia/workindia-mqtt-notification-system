@@ -1,0 +1,49 @@
+version: '2'
+services:
+  mqtt1:
+    build: .
+    container_name: mqtt_server_1
+    command: bash -c "/usr/sbin/mosquitto -c /etc/mosquitto/conf.d/default.conf"
+    volumes:
+      - ./dockerconfig:/etc/mosquitto/conf.d
+    restart: always
+    networks:
+      - default
+    ports:
+      - "2083:1883"
+      - "19001:9001"
+    expose:
+      - "2083"
+      - "19001"
+
+  mqtt2:
+    build: .
+    container_name: mqtt_server_2
+    command: bash -c "/usr/sbin/mosquitto -c /etc/mosquitto/conf.d/default.conf"
+    volumes:
+      - ./dockerconfig:/etc/mosquitto/conf.d
+    restart: always
+    networks:
+      - default
+    ports:
+      - "2084:1883"
+      - "19002:9001"
+    expose:
+      - "2084"
+      - "19002"
+      
+  mqtt3:
+    build: .
+    container_name: mqtt_server_3
+    command: bash -c "/usr/sbin/mosquitto -c /etc/mosquitto/conf.d/default.conf"
+    volumes:
+      - ./dockerconfig:/etc/mosquitto/conf.d
+    restart: always
+    networks:
+      - default
+    ports:
+      - "2085:1883"
+      - "19003:9001"
+    expose:
+      - "2085"
+      - "19003"
